@@ -4,9 +4,7 @@ import React from 'react'
 const Home = async () => {
 
   return (
-    <main>
       <StoryCreatorForm />
-    </main>
   )
 }
 
