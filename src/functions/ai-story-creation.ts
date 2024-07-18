@@ -18,7 +18,7 @@ const model = perplexity('llama-3-sonar-small-32k-chat')
 export async function createStory(genresList:FormDataEntryValue[],description:FormDataEntryValue | null){
     
     const prompt = `Eres un escritor de historia profesional. Crea una historia que contenga los siguientes géneros: ${genresList}. La descripción de la historia
-    a realizar es la siguiente: ${description}. No escribas titulos, ve directo a la historia y separala por parrafos cuando creas conveniente.`
+    a realizar es la siguiente: ${description}. No escribas titulos, ni introducciones antes de la historia, ve directo a la historia y separala por parrafos cuando creas conveniente con etiquetas <br> de html.`
     console.log(prompt) 
 
     const { text } = await generateText({

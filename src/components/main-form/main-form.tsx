@@ -9,7 +9,7 @@ const StoryCreatorForm = () => {
   return (
       <main className="grid lg:grid-cols-12 md:grid-cols-8 grid-cols-4 z-10">
         <form
-          className="border-4 flex flex-col lg:col-span-6 col-span-4 p-8 text-xl h-fit md:min-h-screen rounded-xl"
+          className="border-4 flex flex-col lg:col-span-6 col-span-4 p-8 text-xl h-fit md:min-h-screen rounded-xl dark:text-offwhite dark:bg-gradient-to-b dark:from-indigo-950"
           action={async (formData) => {
             const story = await handleSubmit(formData);
             setAiResponse(story);
@@ -26,7 +26,7 @@ const StoryCreatorForm = () => {
           />
           <input type="submit" className="border py-2 px-6" />
         </form>
-        {aiResponse && <p className="border-4 lg:col-span-6 col-span-4 p-8 text-pretty text-xl rounded-xl">{aiResponse}</p>}
+        {aiResponse && <p className="border-4 lg:col-span-6 col-span-4 p-8 text-pretty text-xl rounded-xl dark:text-offwhite">{aiResponse}</p>}
       </main>
   );
 };
