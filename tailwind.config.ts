@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+
       colors: {
         offwhite: '#f2e9e9',
         border: "hsl(var(--border))",
