@@ -32,6 +32,10 @@
  .spinner div:nth-child(4) {
     --rotation: 360;
  }
+
+ .hidden-plus {
+   
+}
  
  @keyframes spinner-vse6n7 {
     0%, 100% {
@@ -42,6 +46,8 @@
        transform: rotate(calc(var(--rotation) * 1deg)) translateY(300%);
     }
  }
+
+
  
  @keyframes spinner-o824ag {
     to {
