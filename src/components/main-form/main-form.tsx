@@ -18,25 +18,48 @@ const StoryCreatorForm = () => {
   return (
     <main className="grid lg:grid-cols-12 md:grid-cols-8 p-6 justify-center items-center md:gap-12 gap-6 grid-cols-4 z-10 dark:bg-slate-950 bg-slate-100 min-h-screen">
       <form
-        className={`flex flex-col lg:col-span-4 col-span-4 p-8 text-xl min-h-full rounded-xl dark:text-offwhite dark:bg-indigo-900 bg-indigo-200 items-center ${loading && 'justify-center'} ${!loading && 'gap-6'} transition-all col-span-1 none ${hide && 'hidden'}`}
+        className={`flex flex-col lg:col-span-4 col-span-4 p-8 text-xl min-h-full rounded-xl dark:text-offwhite dark:bg-violet-900 bg-indigo-200 items-center ${loading && 'justify-center'} ${!loading && 'gap-6'} transition-all col-span-1 none ${hide && 'hidden'}`}
+        onSubmit={()=>{
+          setLoading(true);
+        }}
+
         action={async (formData) => {
+          
           try {
-            setLoading(true);
-            console.log(loading)
             const res = await handleSubmit(formData);
             setAiResponse(res);
-            localStorage.setItem("story", res);
+            localStorage.setItem("storyRecovery", res);
+          } catch (error) {
+            console.error("Error al enviar el formulario:", error);
+          } finally {
+            setLoading(false)
             setDone(true);
             setTimeout(() => {
               setHide(true);
             }, 1000);
-          } catch (error) {
-            console.error("Error al enviar el formulario:", error);
-          } finally {
-            setLoading(false);
           }
-
           
+        }} 
+      >
+        {!loading && <GenreList/>}
+        {!loading && <FormQuestions />}
+        {loading && <LoaderAsset />}
+        {done && <span>Historia generada!</span>}
+        
+      </form>
+      <div className={`before:block before:rounded-t-xl before:bg-violet-600 before:top-0 before:w-full before:h-20 relative lg:col-span-8 min-h-full col-span-4 rounded-xl dark:text-offwhite dark:bg-violet-950 bg-indigo-100 ${hide && 'lg:!col-start-3'}`}>
+        <StoryPreview aiResponse={aiResponse} edit={edit} setAiResponse={setAiResponse}/>
+        {done && <EditMenu edit={edit} setEdit={setEdit} aiResponse={aiResponse} setAiResponse={setAiResponse}/>}
+      </div>
+
+      {edit && <span className="dark:text-offwhite fixed bottom-0 dark:bg-indigo-800 rounded-t-xl px-6 py-4">Modo de edición</span>}
+    </main>
+  );
+};
+
+export default StoryCreatorForm;
+
+
           /*
           setLoading(true)
           setTimeout(()=>{
@@ -49,22 +72,3 @@ const StoryCreatorForm = () => {
           },3000)
           localStorage.setItem("story",aiResponse)
           */
-        }} 
-      >
-        {!loading && <GenreList/>}
-        {!loading && <FormQuestions />}
-        {loading && <LoaderAsset />}
-        {done && <span>Historia generada!</span>}
-        
-      </form>
-      <div className={`relative lg:col-span-8 min-h-full col-span-4 rounded-xl dark:text-offwhite dark:bg-indigo-950 bg-indigo-100 ${hide && 'lg:!col-start-3'}`}>
-        <StoryPreview aiResponse={aiResponse} edit={edit} setAiResponse={setAiResponse}/>
-        {done && <EditMenu edit={edit} setEdit={setEdit} aiResponse={aiResponse} setAiResponse={setAiResponse}/>}
-      </div>
-
-      {edit && <span className="dark:text-offwhite fixed bottom-0 dark:bg-indigo-800 rounded-t-xl px-6 py-4">Modo de edición</span>}
-    </main>
-  );
-};
-
-export default StoryCreatorForm;

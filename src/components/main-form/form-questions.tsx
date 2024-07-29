@@ -13,7 +13,7 @@ const FormQuestions = () => {
         id="description"
         name="description"
       />
-      <input type="submit" className="py-2 px-6 cursor-pointer w-full rounded-xl dark:bg-indigo-700 bg-indigo-400 hover:bg-indigo-500 transition-all text-offwhite" />
+      <input type="submit" className="py-2 px-6 cursor-pointer w-full rounded-xl dark:bg-violet-700 bg-indigo-400 hover:bg-violet-500 transition-colors text-offwhite" />
     </>
   );
 };

@@ -30,6 +30,7 @@ const StoryPreview = ({ aiResponse, edit, setAiResponse }: any) => {
       sel.addRange(range);
     }
   };
+  
 
   useEffect(()=>{
     restoreCursorPosition()
