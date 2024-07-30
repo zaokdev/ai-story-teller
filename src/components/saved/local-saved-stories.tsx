@@ -26,7 +26,7 @@ const LocalSavedStories = () => {
         <h2 className='text-3xl font-semibold'>Historias guardadas</h2>
         <span className=''>Aquí encontrarás las historias almacenadas en el navegador para poder regresar a ellas.</span>
         {savedStories.map((story:any) => (
-          <div>{story.storageIndex}</div>
+          <div key={story.storageIndex}>{story.storageIndex}</div>
         ))}
     </section>
   )
