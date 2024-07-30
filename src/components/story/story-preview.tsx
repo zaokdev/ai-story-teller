@@ -1,10 +1,12 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import { SaveContext } from "@/context/save-context";
+import React, { useContext, useEffect, useRef } from "react";
 
 //bendito stackOverflow, me ayudó más que chatgpt
 
-const StoryPreview = ({ aiResponse, edit, setAiResponse }: any) => {
+const StoryPreview = ({ edit }: any) => {
 
+  const {story,setStory} = useContext(SaveContext)
   const storyRef = useRef<HTMLDivElement>(null)
   const cursorPos = useRef<any>({node: null, offset: 0});
 
@@ -34,7 +36,7 @@ const StoryPreview = ({ aiResponse, edit, setAiResponse }: any) => {
 
   useEffect(()=>{
     restoreCursorPosition()
-  },[aiResponse])
+  },[story])
   
   return (
     <div
@@ -42,13 +44,13 @@ const StoryPreview = ({ aiResponse, edit, setAiResponse }: any) => {
       contentEditable={edit}
       onBlur={saveCursorPosition}
       onInput={(e: any) => {
-        setAiResponse(e.target.innerText);
+        setStory && setStory(e.target.innerText);
         saveCursorPosition()
       }}
       suppressContentEditableWarning
       className="px-8 py-12 text-pretty text-xl whitespace-pre-line focus:outline-none"
     >
-      {aiResponse}
+      {story}
     </div>
   );
 };

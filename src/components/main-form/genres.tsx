@@ -8,25 +8,31 @@ import classNames from "classnames";
 
 const GenreList = () => {
   const genres = [
-    { value: "scifi", label: "Ciencia ficción" },
+    { value: "fantasia", label: "Fantasía" },
     { value: "terror", label: "Terror" },
     { value: "misterio", label: "Misterio" },
+    { value: "aventura", label: "Aventura" },
+    { value: "realismo", label: "Realista" },
+    { value: "historico", label: "Histórico" },
+    { value: "infantil", label: "Infantil" },
+    { value: "comedia", label: "Comedia" },
     { value: "drama", label: "Drama" },
-  ];
+];
 
   const customStyles = {};
 
   return (
     <>
-      <label htmlFor="genres">
+      <span>
         Selecciona los géneros de tu historia deseada:{" "}
-      </label>
+      </span>
       <Select
       className="w-full"
         options={genres}
         instanceId={"wsad123wqwe"}
         isMulti={true}
         name="genres"
+        id="genres"
         unstyled
         styles={customStyles}
         classNames={{
