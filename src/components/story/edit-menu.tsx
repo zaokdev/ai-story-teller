@@ -5,6 +5,7 @@ import {
   Copy,
   LucideHistory as Restore,
   Save,
+  Home,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -28,15 +29,15 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { SaveContext } from "@/context/save-context";
 
-const EditMenu = ({ edit, setEdit }: any) => {
-  const { story, setStory } = useContext(SaveContext);
+const EditMenu = () => {
+  const { story, setStory, setHide, setDone, setEdit, edit } = useContext(SaveContext);
   const [isRestoreDialogOpen, setRestoreDialogOpen] = useState(false);
   const [isAdditionalDialogOpen, setAdditionalDialogOpen] = useState(false);
   const [Title, setTitle] = useState("")
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="absolute top-5 right-10 transition-all rounded-full p-3 dark:bg-indigo-700 bg-indigo-400 hover:bg-indigo-500 hover:opacity-70 opacity-55">
+      <DropdownMenuTrigger className="absolute top-5 right-10 transition-all rounded-full p-3 dark:bg-indigo-700 bg-indigo-400 hover:bg-indigo-500 hover:opacity-70">
         <More />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="dark:bg-indigo-700 dark:text-offwhite rounded-xl border-none flex flex-col items-center">
@@ -45,15 +46,28 @@ const EditMenu = ({ edit, setEdit }: any) => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="m-0" />
 
+        <DropdownMenuItem onClick={()=>{
+          setHide && setHide(false)
+          setDone && setDone(false)
+          setStory && setStory("Tu historia se verá aquí...")
+        }}
+          className="flex gap-4 hover:bg-indigo-500 self-start min-w-full min-h-full p-2 rounded-xl"
+        >
+          <Home />
+          Inicio
+        </DropdownMenuItem>
+
         <DropdownMenuItem
           onClick={() => {
-            setEdit(!edit);
+            setEdit && setEdit(!edit);
           }}
           className="flex gap-4 hover:bg-indigo-500 self-start min-w-full min-h-full p-2 rounded-xl"
         >
           <Edit2 />
           Editar
         </DropdownMenuItem>
+
+        
 
         <DropdownMenuItem
           onClick={async () => {

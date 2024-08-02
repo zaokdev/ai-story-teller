@@ -7,9 +7,10 @@ import LoaderAsset from "../loader";
 import FormQuestions from "./form-questions";
 import EditMenu from "../story/edit-menu";
 import { SaveContext } from "@/context/save-context";
+import { Button } from "../ui/button";
 
 const StoryCreatorForm = () => {
-  //const [aiResponse, setAiResponse] = useState<any>("Tu historia será desplegada aquí...");
+
   const {
     story,
     setStory,
@@ -51,15 +52,15 @@ const StoryCreatorForm = () => {
         {!loading && <GenreList />}
         {!loading && <FormQuestions />}
         {loading && <LoaderAsset />}
-        {done && <span>Historia generada!</span>}
       </form>
+      
       <div
         className={`before:block before:rounded-t-xl before:bg-violet-600 before:top-0 before:w-full before:h-20 relative lg:col-span-8 min-h-full col-span-4 rounded-xl dark:text-offwhite dark:bg-violet-950 bg-indigo-100 ${
           hide && "md:!col-start-3 md:!col-span-5 lg:!col-span-8 lg:!col-start-3"
         }`}
       >
-        <StoryPreview edit={edit} />
-        {done && <EditMenu edit={edit} setEdit={setEdit} />}
+        <StoryPreview />
+        {done && <EditMenu />}
       </div>
 
       {edit && (

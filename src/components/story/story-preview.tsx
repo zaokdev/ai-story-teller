@@ -4,9 +4,9 @@ import React, { useContext, useEffect, useRef } from "react";
 
 //bendito stackOverflow, me ayudó más que chatgpt
 
-const StoryPreview = ({ edit }: any) => {
+const StoryPreview = () => {
 
-  const {story,setStory} = useContext(SaveContext)
+  const {story,setStory, edit} = useContext(SaveContext)
   const storyRef = useRef<HTMLDivElement>(null)
   const cursorPos = useRef<any>({node: null, offset: 0});
 

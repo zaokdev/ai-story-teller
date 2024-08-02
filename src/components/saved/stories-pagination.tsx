@@ -48,7 +48,7 @@ const StoryPagination = ({savedStories}:any) => {
       ))
 
   return (
-    <section className="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-12 gap-12 mt-8">
+    <section className="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-12 gap-3 md:gap-12 mt-8">
         {AllStories}
         {savedStories.length > 6 && <div className="col-span-full xl:col-start-6 xl:col-span-2 xl:w-full gap-6 flex justify-center items-center">
             <Button className={`dark:bg-slate-500 rounded-xl ${currentPage === 0 && "opacity-30 hover:dark:bg-slate-500 transition-none"}`} onClick={prevPage}><MoveLeft /></Button>
