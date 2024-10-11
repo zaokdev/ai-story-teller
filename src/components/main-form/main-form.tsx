@@ -7,7 +7,6 @@ import LoaderAsset from "../loader";
 import FormQuestions from "./form-questions";
 import EditMenu from "../story/edit-menu";
 import { SaveContext } from "@/context/save-context";
-import { Button } from "../ui/button";
 
 const StoryCreatorForm = () => {
 
@@ -38,8 +37,8 @@ const StoryCreatorForm = () => {
         action={async (formData) => {
           try {
             const res = await handleSubmit(formData);
-            setStory && setStory(res);
-            localStorage.setItem("storyRecovery", res);
+            res && setStory && setStory(res);
+            res && localStorage.setItem("storyRecovery", res);
           } catch (error) {
             console.error("Error al enviar el formulario:", error);
           } finally {
