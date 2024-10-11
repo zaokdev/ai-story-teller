@@ -12,7 +12,7 @@ const perplexity = createOpenAI({
   baseURL: "https://api.perplexity.ai",
 });
 
-const model = perplexity("llama-3-sonar-large-32k-chat");
+const model = perplexity("llama-3.1-sonar-small-128k-online");
 
 export async function createStory(
   genresList: FormDataEntryValue[],
@@ -27,6 +27,6 @@ export async function createStory(
 
     return text;
   } catch (error) {
-    throw new Error("Hubo un problema: " + error);
+    console.error(error)
   }
 }
